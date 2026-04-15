@@ -108,30 +108,32 @@ export default function Home() {
               </div>
 
               <div className="grid items-start gap-6 2xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-                <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                  {qrDefinition && (
-                    <InputForm
-                      definition={qrDefinition}
-                      values={formValues}
-                      onChange={updateFormValue}
-                      onClear={clearForm}
+                <div className="space-y-6">
+                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                    {qrDefinition && (
+                      <InputForm
+                        definition={qrDefinition}
+                        values={formValues}
+                        onChange={updateFormValue}
+                        onClear={clearForm}
+                      />
+                    )}
+                  </div>
+
+                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.35s' }}>
+                    <PresetsPanel
+                      presets={presets}
+                      onSavePreset={handleSavePreset}
+                      onApplyPreset={handleApplyPreset}
+                      onDeletePreset={handleDeletePreset}
+                      onCopyShareLink={handleCopyShareLink}
                     />
-                  )}
+                  </div>
                 </div>
 
                 <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                   <CustomizationPanel options={options} onChange={updateOptions} />
                 </div>
-              </div>
-
-              <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.35s' }}>
-                <PresetsPanel
-                  presets={presets}
-                  onSavePreset={handleSavePreset}
-                  onApplyPreset={handleApplyPreset}
-                  onDeletePreset={handleDeletePreset}
-                  onCopyShareLink={handleCopyShareLink}
-                />
               </div>
             </div>
 
