@@ -91,66 +91,72 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <section className="container py-6 lg:py-10">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] xl:items-start">
-            <div className="min-w-0 space-y-6">
-              <div className="space-y-4 animate-fade-in">
-                <p className="section-label">Free QR Generator</p>
-                <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl" style={{ color: 'var(--color-text-primary)' }}>
-                  Make polished QR codes in seconds with a cleaner, faster workflow.
-                </h1>
-                <p className="max-w-2xl text-base sm:text-lg" style={{ color: 'var(--color-text-secondary)' }}>
-                  Pick a QR type, enter your content, customize the output, and export instantly. The entire experience stays client-side and ready for future backend expansion.
-                </p>
-              </div>
-
-              <div className="card p-4 sm:p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <QRTypeSelector selectedType={qrType} onChange={changeQRType} />
-              </div>
-
-              <div className="grid items-start gap-6 2xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-                <div className="space-y-6">
-                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                    {qrDefinition && (
-                      <InputForm
-                        definition={qrDefinition}
-                        values={formValues}
-                        onChange={updateFormValue}
-                        onClear={clearForm}
-                      />
-                    )}
-                  </div>
-
-                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.35s' }}>
-                    <PresetsPanel
-                      presets={presets}
-                      onSavePreset={handleSavePreset}
-                      onApplyPreset={handleApplyPreset}
-                      onDeletePreset={handleDeletePreset}
-                      onCopyShareLink={handleCopyShareLink}
-                    />
-                  </div>
-                </div>
-
-                <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                  <CustomizationPanel options={options} onChange={updateOptions} />
-                </div>
-              </div>
+          <div className="space-y-6 lg:space-y-8">
+            <div className="max-w-3xl space-y-4 animate-fade-in">
+              <p className="section-label">Free QR Generator</p>
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl" style={{ color: 'var(--color-text-primary)' }}>
+                Make polished QR codes in seconds with a cleaner, faster workflow.
+              </h1>
+              <p className="max-w-2xl text-base sm:text-lg" style={{ color: 'var(--color-text-secondary)' }}>
+                Pick a QR type, enter your content, customize the output, and export instantly. The entire experience stays client-side and ready for future backend expansion.
+              </p>
             </div>
 
-            <div className="min-w-0 xl:sticky xl:top-24 xl:self-start">
-              <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <div className="mb-5 flex items-center justify-between gap-3">
-                  <div>
-                    <p className="section-label">Preview</p>
-                    <h2 className="mt-2 text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                      Export-ready QR output
-                    </h2>
+            <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(340px,0.85fr)] xl:items-start">
+              <div className="min-w-0 space-y-6">
+                <div className="card p-4 sm:p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                  <QRTypeSelector selectedType={qrType} onChange={changeQRType} />
+                </div>
+
+                <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.85fr)]">
+                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                    <div className="space-y-6">
+                      {qrDefinition && (
+                        <InputForm
+                          definition={qrDefinition}
+                          values={formValues}
+                          onChange={updateFormValue}
+                          onClear={clearForm}
+                        />
+                      )}
+
+                      <div
+                        className="border-t pt-6"
+                        style={{ borderColor: 'var(--color-border)' }}
+                      >
+                        <PresetsPanel
+                          presets={presets}
+                          onSavePreset={handleSavePreset}
+                          onApplyPreset={handleApplyPreset}
+                          onDeletePreset={handleDeletePreset}
+                          onCopyShareLink={handleCopyShareLink}
+                          embedded
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: 'var(--color-bg-tertiary)', color: 'var(--color-text-secondary)' }}>
-                    {qrType.toUpperCase()}
+
+                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                    <CustomizationPanel options={options} onChange={updateOptions} />
                   </div>
                 </div>
-                <QRPreview data={qrData} options={options} />
+              </div>
+
+              <div className="min-w-0 xl:sticky xl:top-24 xl:self-start">
+                <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <div>
+                      <p className="section-label">Preview</p>
+                      <h2 className="mt-2 text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                        Export-ready QR output
+                      </h2>
+                    </div>
+                    <div className="rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: 'var(--color-bg-tertiary)', color: 'var(--color-text-secondary)' }}>
+                      {qrType.toUpperCase()}
+                    </div>
+                  </div>
+                  <QRPreview data={qrData} options={options} />
+                </div>
               </div>
             </div>
           </div>

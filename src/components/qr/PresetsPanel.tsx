@@ -11,6 +11,7 @@ interface PresetsPanelProps {
   onApplyPreset: (preset: QRPreset) => void;
   onDeletePreset: (id: string) => void;
   onCopyShareLink: (preset: QRPreset) => Promise<boolean>;
+  embedded?: boolean;
 }
 
 export function PresetsPanel({
@@ -19,6 +20,7 @@ export function PresetsPanel({
   onApplyPreset,
   onDeletePreset,
   onCopyShareLink,
+  embedded = false,
 }: PresetsPanelProps) {
   const [presetName, setPresetName] = useState('');
   const [copiedPresetId, setCopiedPresetId] = useState<string | null>(null);
@@ -38,15 +40,15 @@ export function PresetsPanel({
   };
 
   return (
-    <div className="space-y-4">
+    <div className={embedded ? 'space-y-3.5' : 'space-y-4'}>
       <div>
         <p className="section-label">Presets</p>
-        <h2 className="mt-2 text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+        <h2 className={embedded ? 'mt-2 text-lg font-semibold' : 'mt-2 text-xl font-semibold'} style={{ color: 'var(--color-text-primary)' }}>
           Save and share your favorite styles
         </h2>
       </div>
 
-      <div className="panel-muted p-4 sm:p-5">
+      <div className="panel-muted p-4">
         <div className="flex flex-col gap-3 sm:flex-row">
           <Input
             placeholder="Preset name (e.g. Brand Dark)"
@@ -119,4 +121,3 @@ export function PresetsPanel({
     </div>
   );
 }
-
