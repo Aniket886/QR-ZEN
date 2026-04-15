@@ -5,12 +5,23 @@ import { ColorPicker } from '@/components/ui/ColorPicker';
 import { Toggle } from '@/components/ui/Toggle';
 import { Input } from '@/components/ui/Input';
 import { Slider } from '@/components/ui/Slider';
+import { Select } from '@/components/ui/Select';
 import { Palette, Maximize2 } from 'lucide-react';
 
 interface CustomizationPanelProps {
   options: QRGeneratorOptions;
   onChange: (options: Partial<QRGeneratorOptions>) => void;
 }
+
+const designPresets: Record<
+  QRGeneratorOptions['designPreset'],
+  Pick<QRGeneratorOptions, 'fgColor' | 'bgColor' | 'qrShape' | 'marginSize'>
+> = {
+  classic: { fgColor: '#000000', bgColor: '#ffffff', qrShape: 'square', marginSize: 0 },
+  midnight: { fgColor: '#8c7bff', bgColor: '#0b1328', qrShape: 'rounded', marginSize: 1 },
+  ocean: { fgColor: '#006b7a', bgColor: '#e9fdff', qrShape: 'rounded', marginSize: 1 },
+  sunset: { fgColor: '#7a245a', bgColor: '#fff1f2', qrShape: 'circle', marginSize: 3 },
+};
 
 export function CustomizationPanel({ options, onChange }: CustomizationPanelProps) {
   return (
@@ -60,6 +71,39 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
               label="Background"
               value={options.bgColor}
               onChange={(bgColor) => onChange({ bgColor })}
+            />
+          </div>
+        </div>
+
+        <div className="panel-muted min-w-0 p-3.5 sm:p-5">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <Select
+              label="Design"
+              value={options.designPreset}
+              options={[
+                { value: 'classic', label: 'Classic' },
+                { value: 'midnight', label: 'Midnight' },
+                { value: 'ocean', label: 'Ocean' },
+                { value: 'sunset', label: 'Sunset' },
+              ]}
+              onChange={(e) => {
+                const designPreset = e.target.value as QRGeneratorOptions['designPreset'];
+                onChange({ designPreset, ...designPresets[designPreset] });
+              }}
+            />
+            <Select
+              label="QR Shape"
+              value={options.qrShape}
+              options={[
+                { value: 'square', label: 'Square' },
+                { value: 'rounded', label: 'Rounded' },
+                { value: 'circle', label: 'Circle' },
+              ]}
+              onChange={(e) =>
+                onChange({
+                  qrShape: e.target.value as QRGeneratorOptions['qrShape'],
+                })
+              }
             />
           </div>
         </div>
