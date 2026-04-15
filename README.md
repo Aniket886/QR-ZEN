@@ -75,3 +75,90 @@ The UI has been completely redesigned with a modern glass-panel aesthetic and fu
 ---
 
 ## 📁 Project Structure
+
+```
+
+src/
+
+├── app/
+
+├── components/
+
+│   ├── layout/
+
+│   ├── qr/
+
+│   └── ui/
+
+├── config/
+
+├── hooks/
+
+└── lib/
+
+```
+
+---
+
+## 🏁 Getting Started
+
+```
+
+npm install
+
+npm run dev
+
+```
+
+Open http://localhost:3000.
+
+---
+
+## 🎨 Using Presets
+
+1. Configure your QR type, data, and visual settings.
+2. Enter a preset name in the **Presets** card and click **Save Preset**.
+3. Use **Apply** to restore a preset, **Delete** to remove it, and **Share** to copy a shareable URL.
+
+---
+
+## 📦 Build
+
+```
+
+npm run build
+
+npm start
+
+```
+
+---
+
+## 👤 Developer & Footer Info
+
+The footer includes:
+
+- **Product label:** `Free QR Generator`
+- **Version:** `v1.0.0`
+- **Developer credit:** Made with ♥ by [Aniket Tegginamath](https://linktr.ee/anikettegginamath) for quick sharing
+- ☕ [Buy Me a Coffee](https://buymeacoffee.com/aniket_tegginamath)
+
+> Footer component: `src/components/layout/Footer.tsx`
+
+---
+
+## 🤝 Notes for Contributors
+
+- Keep visual language consistent with the existing glass-card system.
+- Preserve responsive behavior in narrow cards and small screens.
+- Keep QR output scannable — avoid clipping the matrix itself.
+- Follow local repository rules in `AGENTS.md` for Next.js version-specific guidance.
+
+---
+
+<div align="center">
+
+**📄 MIT © [Aniket Tegginamath](https://linktr.ee/anikettegginamath)**
+
+</div>
+```
