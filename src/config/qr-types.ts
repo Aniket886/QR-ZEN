@@ -197,7 +197,7 @@ export interface QRGeneratorOptions {
   fgColor: string;
   bgColor: string;
   designPreset: 'classic' | 'midnight' | 'ocean' | 'sunset';
-  qrShape: 'square' | 'rounded' | 'circle';
+  qrShape: 'square' | 'rounded';
   marginSize: number;
   includeLogo: boolean;
   logoUrl?: string;

@@ -37,12 +37,16 @@ export function isValidSnapshot(value: unknown): value is QRStateSnapshot {
 }
 
 export function sanitizeSnapshot(snapshot: QRStateSnapshot): QRStateSnapshot {
+  const rawShape = (snapshot.options as { qrShape?: string }).qrShape;
+  const normalizedShape = rawShape === 'rounded' ? 'rounded' : 'square';
+
   return {
     qrType: snapshot.qrType,
     formValues: { ...snapshot.formValues },
     options: {
       ...defaultQRGeneratorOptions,
       ...snapshot.options,
+      qrShape: normalizedShape,
       logoUrl: snapshot.options.includeLogo ? snapshot.options.logoUrl : undefined,
     },
   };
@@ -87,4 +91,3 @@ export function savePresets(presets: QRPreset[]): void {
   if (typeof window === 'undefined') return;
   window.localStorage.setItem(PRESETS_STORAGE_KEY, JSON.stringify(presets));
 }
-

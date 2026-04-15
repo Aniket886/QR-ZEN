@@ -20,7 +20,7 @@ const designPresets: Record<
   classic: { fgColor: '#000000', bgColor: '#ffffff', qrShape: 'square', marginSize: 0 },
   midnight: { fgColor: '#8c7bff', bgColor: '#0b1328', qrShape: 'rounded', marginSize: 1 },
   ocean: { fgColor: '#006b7a', bgColor: '#e9fdff', qrShape: 'rounded', marginSize: 1 },
-  sunset: { fgColor: '#7a245a', bgColor: '#fff1f2', qrShape: 'circle', marginSize: 3 },
+  sunset: { fgColor: '#7a245a', bgColor: '#fff1f2', qrShape: 'rounded', marginSize: 3 },
 };
 
 export function CustomizationPanel({ options, onChange }: CustomizationPanelProps) {
@@ -97,7 +97,6 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
               options={[
                 { value: 'square', label: 'Square' },
                 { value: 'rounded', label: 'Rounded' },
-                { value: 'circle', label: 'Circle' },
               ]}
               onChange={(e) =>
                 onChange({

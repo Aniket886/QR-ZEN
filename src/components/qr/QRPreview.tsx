@@ -15,8 +15,7 @@ export function QRPreview({ data, options }: QRPreviewProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [copied, setCopied] = useState(false);
   const previewDisplaySize = Math.min(options.size, 320);
-  const frameRadius =
-    options.qrShape === 'circle' ? '9999px' : options.qrShape === 'rounded' ? '1rem' : '0.45rem';
+  const frameRadius = options.qrShape === 'rounded' ? '1rem' : '0.45rem';
 
   const handleDownloadPNG = () => {
     const svg = svgRef.current;
