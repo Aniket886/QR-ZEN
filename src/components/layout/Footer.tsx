@@ -1,6 +1,6 @@
 'use client';
 
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles, Heart, Coffee } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -28,6 +28,20 @@ export function Footer() {
               Aniket Tegginamath
             </a>
             <span>for quick sharing</span>
+            <a
+              href="https://buymeacoffee.com/aniket_tegginamath"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold transition sm:text-sm"
+              style={{
+                backgroundColor: 'var(--color-bg-tertiary)',
+                color: 'var(--color-text-primary)',
+                border: '1px solid var(--color-border)',
+              }}
+            >
+              <Coffee className="h-3.5 w-3.5" />
+              Buy Me a Coffee
+            </a>
           </div>
         </div>
       </div>
