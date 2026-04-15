@@ -138,21 +138,12 @@ npm start
 
 The footer includes:
 
-- **Product label:** `Free QR Generator`
+- **Product label:** `QR Generator`
 - **Version:** `v1.0.0`
 - **Developer credit:** Made with ♥ by [Aniket Tegginamath](https://linktr.ee/anikettegginamath) for quick sharing
 - ☕ [Buy Me a Coffee](https://buymeacoffee.com/aniket_tegginamath)
 
-> Footer component: `src/components/layout/Footer.tsx`
-
 ---
-
-## 🤝 Notes for Contributors
-
-- Keep visual language consistent with the existing glass-card system.
-- Preserve responsive behavior in narrow cards and small screens.
-- Keep QR output scannable — avoid clipping the matrix itself.
-- Follow local repository rules in `AGENTS.md` for Next.js version-specific guidance.
 
 ---
 
