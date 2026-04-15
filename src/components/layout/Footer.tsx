@@ -17,7 +17,7 @@ export function Footer() {
           <div className="flex items-center gap-1 text-xs sm:text-sm" style={{ color: 'var(--color-text-muted)' }}>
             <span>Made with</span>
             <Heart className="h-4 w-4 text-rose-500" />
-            <span>for quick sharing</span>
+            <span>by Aniket886 for quick sharing</span>
           </div>
         </div>
       </div>
