@@ -102,15 +102,16 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(360px,0.9fr)] xl:items-start">
-              <div className="min-w-0 space-y-6">
-                <div className="card p-4 sm:p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                  <QRTypeSelector selectedType={qrType} onChange={changeQRType} />
-                </div>
+            <div className="card p-4 sm:p-6 lg:p-7 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              <div className="space-y-6">
+                <QRTypeSelector selectedType={qrType} onChange={changeQRType} />
 
-                <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(360px,420px)]">
-                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                    <div className="space-y-6">
+                <div
+                  className="grid gap-6 border-t pt-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+                  style={{ borderColor: 'var(--color-border)' }}
+                >
+                  <div className="min-w-0 space-y-6">
+                    <section className="space-y-6 rounded-[1.5rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)', backgroundColor: 'color-mix(in srgb, var(--color-panel) 72%, transparent)' }}>
                       {qrDefinition && (
                         <InputForm
                           definition={qrDefinition}
@@ -133,29 +134,33 @@ export default function Home() {
                           embedded
                         />
                       </div>
-                    </div>
+                    </section>
+
+                    <section className="rounded-[1.5rem] border p-4 sm:p-5 xl:hidden" style={{ borderColor: 'var(--color-border)', backgroundColor: 'color-mix(in srgb, var(--color-panel) 72%, transparent)' }}>
+                      <CustomizationPanel options={options} onChange={updateOptions} />
+                    </section>
                   </div>
 
-                  <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                    <CustomizationPanel options={options} onChange={updateOptions} />
-                  </div>
-                </div>
-              </div>
+                  <div className="min-w-0 space-y-6">
+                    <section className="hidden rounded-[1.5rem] border p-4 sm:p-5 xl:block" style={{ borderColor: 'var(--color-border)', backgroundColor: 'color-mix(in srgb, var(--color-panel) 72%, transparent)' }}>
+                      <CustomizationPanel options={options} onChange={updateOptions} />
+                    </section>
 
-              <div className="min-w-0 xl:sticky xl:top-24 xl:self-start">
-                <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                  <div className="mb-5 flex items-center justify-between gap-3">
-                    <div>
-                      <p className="section-label">Preview</p>
-                      <h2 className="mt-2 text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                        Export-ready QR output
-                      </h2>
-                    </div>
-                    <div className="rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: 'var(--color-bg-tertiary)', color: 'var(--color-text-secondary)' }}>
-                      {qrType.toUpperCase()}
-                    </div>
+                    <section className="rounded-[1.5rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)', backgroundColor: 'color-mix(in srgb, var(--color-panel) 72%, transparent)' }}>
+                      <div className="mb-5 flex items-center justify-between gap-3">
+                        <div>
+                          <p className="section-label">Preview</p>
+                          <h2 className="mt-2 text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                            Export-ready QR output
+                          </h2>
+                        </div>
+                        <div className="rounded-full px-3 py-1 text-xs font-medium" style={{ backgroundColor: 'var(--color-bg-tertiary)', color: 'var(--color-text-secondary)' }}>
+                          {qrType.toUpperCase()}
+                        </div>
+                      </div>
+                      <QRPreview data={qrData} options={options} />
+                    </section>
                   </div>
-                  <QRPreview data={qrData} options={options} />
                 </div>
               </div>
             </div>

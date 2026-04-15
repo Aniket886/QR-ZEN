@@ -54,9 +54,9 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
         </div>
       </div>
 
-      <div className="space-y-6">
-        <section className="space-y-4 rounded-[1.35rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bg-tertiary)' }}>
-          <div className="flex min-w-0 flex-wrap items-center gap-2">
+      <div className="grid gap-4">
+        <section className="panel-muted rounded-[1.35rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)' }}>
+          <div className="mb-4 flex min-w-0 flex-wrap items-center gap-2">
             <Maximize2 className="w-4 h-4" style={{ color: 'var(--color-text-secondary)' }} />
             <span className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Size
@@ -74,8 +74,8 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
           />
         </section>
 
-        <section className="space-y-4 border-t pt-6" style={{ borderColor: 'var(--color-border)' }}>
-          <div>
+        <section className="panel-muted rounded-[1.35rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)' }}>
+          <div className="mb-4">
             <p className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Colors
             </p>
@@ -84,14 +84,14 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bg-tertiary)' }}>
+            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-panel)' }}>
               <ColorPicker
                 label="Foreground"
                 value={options.fgColor}
                 onChange={(fgColor) => onChange({ fgColor })}
               />
             </div>
-            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bg-tertiary)' }}>
+            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-panel)' }}>
               <ColorPicker
                 label="Background"
                 value={options.bgColor}
@@ -101,8 +101,8 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
           </div>
         </section>
 
-        <section className="space-y-4 border-t pt-6" style={{ borderColor: 'var(--color-border)' }}>
-          <div>
+        <section className="panel-muted rounded-[1.35rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)' }}>
+          <div className="mb-4">
             <p className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Style
             </p>
@@ -110,7 +110,7 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
               Pick a preset and module shape without crowding the controls.
             </p>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: 'var(--color-text-muted)' }}>
                 Design Preset
@@ -126,7 +126,7 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
                       className="flex items-start justify-between gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-200"
                       style={{
                         borderColor: active ? 'var(--color-primary)' : 'var(--color-border)',
-                        backgroundColor: active ? 'color-mix(in srgb, var(--color-primary) 12%, var(--color-panel))' : 'var(--color-bg-tertiary)',
+                        backgroundColor: active ? 'color-mix(in srgb, var(--color-primary) 12%, var(--color-panel))' : 'var(--color-panel)',
                         boxShadow: active ? '0 0 0 1px color-mix(in srgb, var(--color-primary) 30%, transparent)' : 'none',
                       }}
                     >
@@ -163,7 +163,7 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
                       className="rounded-2xl border px-4 py-3 text-left transition-all duration-200"
                       style={{
                         borderColor: active ? 'var(--color-primary)' : 'var(--color-border)',
-                        backgroundColor: active ? 'color-mix(in srgb, var(--color-primary) 12%, var(--color-panel))' : 'var(--color-bg-tertiary)',
+                        backgroundColor: active ? 'color-mix(in srgb, var(--color-primary) 12%, var(--color-panel))' : 'var(--color-panel)',
                       }}
                     >
                       <span className="block text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
@@ -180,8 +180,8 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
           </div>
         </section>
 
-        <section className="space-y-4 border-t pt-6" style={{ borderColor: 'var(--color-border)' }}>
-          <div>
+        <section className="panel-muted rounded-[1.35rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)' }}>
+          <div className="mb-4">
             <p className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Branding
             </p>
@@ -195,7 +195,7 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
             label="Add Logo"
             description="Include your logo in the QR code"
           />
-          
+
           {options.includeLogo && (
             <div className="mt-4 min-w-0 animate-fade-in">
               <Input
