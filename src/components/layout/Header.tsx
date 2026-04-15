@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 export function Header() {
   const { theme, toggleTheme, mounted } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [logoLoadFailed, setLogoLoadFailed] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -28,19 +29,31 @@ export function Header() {
       <div className="container py-4">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3">
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl text-white"
-              style={{
-                background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
-                boxShadow: '0 16px 30px rgb(109 94 252 / 0.24)',
-              }}
-            >
-              <QrCode className="h-6 w-6" />
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px]"
-                style={{ color: 'var(--color-primary)' }}
+            {!logoLoadFailed ? (
+              <img
+                src="/branding/qrzen-logo.png"
+                alt="QR-ZEN logo"
+                className="h-12 w-12 rounded-2xl object-cover"
+                style={{ boxShadow: '0 16px 30px rgb(109 94 252 / 0.24)' }}
+                onError={() => setLogoLoadFailed(true)}
+              />
+            ) : (
+              <div
+                className="relative flex h-12 w-12 items-center justify-center rounded-2xl text-white"
+                style={{
+                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
+                  boxShadow: '0 16px 30px rgb(109 94 252 / 0.24)',
+                }}
               >
-                <Sparkles className="h-3 w-3" />
-              </span>
-            </div>
+                <QrCode className="h-6 w-6" />
+                <span
+                  className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px]"
+                  style={{ color: 'var(--color-primary)' }}
+                >
+                  <Sparkles className="h-3 w-3" />
+                </span>
+              </div>
+            )}
 
             <div>
               <p className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>

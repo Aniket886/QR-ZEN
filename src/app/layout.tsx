@@ -14,6 +14,22 @@ export const metadata: Metadata = {
   keywords: ['QR code generator', 'QR code', 'free QR', 'QR generator', 'QR maker'],
   authors: [{ name: 'Free QR Generator' }],
   manifest: '/manifest.json',
+  icons: {
+    icon: '/branding/qrzen-logo.png',
+    shortcut: '/branding/qrzen-logo.png',
+    apple: '/branding/qrzen-logo.png',
+  },
+  openGraph: {
+    title: 'Free QR Generator',
+    description: 'Generate QR codes instantly with clean design presets and fast export.',
+    images: ['/branding/qrzen-logo.png'],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Free QR Generator',
+    description: 'Generate QR codes instantly with clean design presets and fast export.',
+    images: ['/branding/qrzen-logo.png'],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
