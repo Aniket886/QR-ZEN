@@ -20,11 +20,17 @@ The UI has been redesigned with a modern glass-panel style and responsive behavi
 - Visual customization:
   - QR size slider
   - Foreground/background color pickers
+  - Design presets: Classic, Midnight, Ocean, Sunset
+  - QR shape: Square or Rounded
   - Optional logo embedding
+- Presets and sharing:
+  - Save named presets to local storage
+  - Apply/delete presets anytime
+  - Shareable preset links via `?preset=...`
 - Export options:
   - PNG download
   - SVG download
-  - Copy raw data
+  - Copy raw encoded data
 - PWA-ready setup with manifest
 
 ## Tech Stack
@@ -58,6 +64,12 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Using Presets
+
+1. Configure QR type, data, and visual settings.
+2. Enter a preset name in the Presets card and click `Save Preset`.
+3. Use `Apply` to restore a preset, `Delete` to remove it, and `Share` to copy a share URL.
+
 ## Build
 
 ```bash
@@ -71,7 +83,9 @@ Footer includes:
 
 - Product label: `Free QR Generator`
 - Version: `v1.0.0`
-- Developer credit: `Made with <3 by Aniket886 for quick sharing`
+- Developer credit: `Made with ♥ by Aniket Tegginamath for quick sharing`
+- Portfolio link: `https://linktr.ee/anikettegginamath`
+- Buy Me a Coffee link: `https://buymeacoffee.com/aniket_tegginamath`
 
 Footer component location:
 
@@ -81,4 +95,5 @@ Footer component location:
 
 - Keep visual language consistent with existing glass-card system.
 - Preserve responsive behavior in narrow cards and small screens.
+- Keep QR output scannable: avoid clipping the matrix itself.
 - Follow local repository rule in `AGENTS.md` for Next.js version-specific guidance.
