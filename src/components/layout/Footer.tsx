@@ -17,7 +17,17 @@ export function Footer() {
           <div className="flex items-center gap-1 text-xs sm:text-sm" style={{ color: 'var(--color-text-muted)' }}>
             <span>Made with</span>
             <Heart className="h-4 w-4 text-rose-500" />
-            <span>by Aniket886 for quick sharing</span>
+            <span>by</span>
+            <a
+              href="https://linktr.ee/anikettegginamath"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="animate-pulse text-sm font-semibold sm:text-base"
+              style={{ color: 'var(--color-primary)' }}
+            >
+              Aniket Tegginamath
+            </a>
+            <span>for quick sharing</span>
           </div>
         </div>
       </div>
