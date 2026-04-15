@@ -15,9 +15,8 @@ export function QRPreview({ data, options }: QRPreviewProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [copied, setCopied] = useState(false);
   const previewDisplaySize = Math.min(options.size, 320);
-  const qrShapeRadius =
+  const frameRadius =
     options.qrShape === 'circle' ? '9999px' : options.qrShape === 'rounded' ? '1rem' : '0.45rem';
-  const effectiveMargin = options.qrShape === 'circle' ? Math.max(options.marginSize, 4) : options.marginSize;
 
   const handleDownloadPNG = () => {
     const svg = svgRef.current;
@@ -98,32 +97,29 @@ export function QRPreview({ data, options }: QRPreviewProps) {
         <div className="mx-auto flex w-full max-w-full flex-col items-center gap-4">
           <div className="rounded-[1.75rem] p-4 animate-pulse-glow" style={{ background: 'linear-gradient(135deg, rgb(109 94 252 / 0.12), rgb(25 194 201 / 0.12))' }}>
             <div className="rounded-[1.4rem] p-5" style={{ backgroundColor: 'var(--color-panel)', boxShadow: 'var(--shadow-lg)' }}>
-              <div
-                className="overflow-hidden p-4"
-                style={{ backgroundColor: options.bgColor, borderRadius: qrShapeRadius }}
-              >
-            <QRCodeSVG
-              ref={svgRef}
-              value={data}
-              size={options.size}
-              style={{ width: previewDisplaySize, maxWidth: '100%', height: 'auto', borderRadius: qrShapeRadius }}
-              fgColor={options.fgColor}
-              bgColor={options.bgColor}
-              level="H"
-              marginSize={effectiveMargin}
-              imageSettings={
-                options.includeLogo && options.logoUrl
-                  ? {
-                      src: options.logoUrl,
-                      x: undefined,
-                      y: undefined,
-                      height: options.size * 0.2,
-                      width: options.size * 0.2,
-                      excavate: true,
-                    }
-                  : undefined
-              }
-            />
+              <div className="p-4" style={{ backgroundColor: options.bgColor, borderRadius: frameRadius }}>
+                <QRCodeSVG
+                  ref={svgRef}
+                  value={data}
+                  size={options.size}
+                  style={{ width: previewDisplaySize, maxWidth: '100%', height: 'auto' }}
+                  fgColor={options.fgColor}
+                  bgColor={options.bgColor}
+                  level="H"
+                  marginSize={options.marginSize}
+                  imageSettings={
+                    options.includeLogo && options.logoUrl
+                      ? {
+                          src: options.logoUrl,
+                          x: undefined,
+                          y: undefined,
+                          height: options.size * 0.2,
+                          width: options.size * 0.2,
+                          excavate: true,
+                        }
+                      : undefined
+                  }
+                />
               </div>
             </div>
           </div>
