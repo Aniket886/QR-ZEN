@@ -5,7 +5,6 @@ import { ColorPicker } from '@/components/ui/ColorPicker';
 import { Toggle } from '@/components/ui/Toggle';
 import { Input } from '@/components/ui/Input';
 import { Slider } from '@/components/ui/Slider';
-import { Select } from '@/components/ui/Select';
 import { Palette, Maximize2 } from 'lucide-react';
 
 interface CustomizationPanelProps {
@@ -23,9 +22,21 @@ const designPresets: Record<
   sunset: { fgColor: '#7a245a', bgColor: '#fff1f2', qrShape: 'rounded', marginSize: 3 },
 };
 
+const designOptions: { value: QRGeneratorOptions['designPreset']; label: string; description: string }[] = [
+  { value: 'classic', label: 'Classic', description: 'Neutral black on white' },
+  { value: 'midnight', label: 'Midnight', description: 'High-contrast dark theme' },
+  { value: 'ocean', label: 'Ocean', description: 'Fresh cyan and soft light' },
+  { value: 'sunset', label: 'Sunset', description: 'Warm editorial accent' },
+];
+
+const shapeOptions: { value: QRGeneratorOptions['qrShape']; label: string; description: string }[] = [
+  { value: 'square', label: 'Square', description: 'Sharp and technical' },
+  { value: 'rounded', label: 'Rounded', description: 'Softer visual feel' },
+];
+
 export function CustomizationPanel({ options, onChange }: CustomizationPanelProps) {
   return (
-    <div className="min-w-0 space-y-5 sm:space-y-6">
+    <div className="min-w-0 space-y-6">
       <div className="min-w-0">
         <p className="section-label">Customize</p>
         <div className="mt-2 flex min-w-0 items-center gap-2.5 sm:gap-3">
@@ -43,9 +54,9 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div className="panel-muted min-w-0 p-4 sm:p-5">
-          <div className="mb-4 flex min-w-0 flex-wrap items-center gap-2">
+      <div className="space-y-6">
+        <section className="space-y-4 rounded-[1.35rem] border p-4 sm:p-5" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bg-tertiary)' }}>
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
             <Maximize2 className="w-4 h-4" style={{ color: 'var(--color-text-secondary)' }} />
             <span className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Size
@@ -61,10 +72,10 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
             max={512}
             step={64}
           />
-        </div>
+        </section>
 
-        <div className="panel-muted min-w-0 p-4 sm:p-5">
-          <div className="mb-4">
+        <section className="space-y-4 border-t pt-6" style={{ borderColor: 'var(--color-border)' }}>
+          <div>
             <p className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Colors
             </p>
@@ -72,15 +83,15 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
               Set contrast clearly so the code stays sharp and scannable.
             </p>
           </div>
-          <div className="grid gap-3 sm:gap-4">
-            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-panel)' }}>
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bg-tertiary)' }}>
               <ColorPicker
                 label="Foreground"
                 value={options.fgColor}
                 onChange={(fgColor) => onChange({ fgColor })}
               />
             </div>
-            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-panel)' }}>
+            <div className="rounded-2xl border p-3.5 sm:p-4" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bg-tertiary)' }}>
               <ColorPicker
                 label="Background"
                 value={options.bgColor}
@@ -88,10 +99,10 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
               />
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="panel-muted min-w-0 p-4 sm:p-5">
-          <div className="mb-4">
+        <section className="space-y-4 border-t pt-6" style={{ borderColor: 'var(--color-border)' }}>
+          <div>
             <p className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Style
             </p>
@@ -99,39 +110,78 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
               Pick a preset and module shape without crowding the controls.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Select
-              label="Design"
-              value={options.designPreset}
-              options={[
-                { value: 'classic', label: 'Classic' },
-                { value: 'midnight', label: 'Midnight' },
-                { value: 'ocean', label: 'Ocean' },
-                { value: 'sunset', label: 'Sunset' },
-              ]}
-              onChange={(e) => {
-                const designPreset = e.target.value as QRGeneratorOptions['designPreset'];
-                onChange({ designPreset, ...designPresets[designPreset] });
-              }}
-            />
-            <Select
-              label="QR Shape"
-              value={options.qrShape}
-              options={[
-                { value: 'square', label: 'Square' },
-                { value: 'rounded', label: 'Rounded' },
-              ]}
-              onChange={(e) =>
-                onChange({
-                  qrShape: e.target.value as QRGeneratorOptions['qrShape'],
-                })
-              }
-            />
-          </div>
-        </div>
+          <div className="space-y-3">
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: 'var(--color-text-muted)' }}>
+                Design Preset
+              </p>
+              <div className="grid gap-2">
+                {designOptions.map((preset) => {
+                  const active = options.designPreset === preset.value;
+                  return (
+                    <button
+                      key={preset.value}
+                      type="button"
+                      onClick={() => onChange({ designPreset: preset.value, ...designPresets[preset.value] })}
+                      className="flex items-start justify-between gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-200"
+                      style={{
+                        borderColor: active ? 'var(--color-primary)' : 'var(--color-border)',
+                        backgroundColor: active ? 'color-mix(in srgb, var(--color-primary) 12%, var(--color-panel))' : 'var(--color-bg-tertiary)',
+                        boxShadow: active ? '0 0 0 1px color-mix(in srgb, var(--color-primary) 30%, transparent)' : 'none',
+                      }}
+                    >
+                      <span>
+                        <span className="block text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                          {preset.label}
+                        </span>
+                        <span className="mt-1 block text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+                          {preset.description}
+                        </span>
+                      </span>
+                      <span
+                        className="mt-0.5 h-2.5 w-2.5 shrink-0 rounded-full"
+                        style={{ backgroundColor: active ? 'var(--color-primary)' : 'var(--color-border-strong)' }}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
-        <div className="panel-muted min-w-0 p-4 sm:p-5">
-          <div className="mb-4">
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: 'var(--color-text-muted)' }}>
+                QR Shape
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {shapeOptions.map((shape) => {
+                  const active = options.qrShape === shape.value;
+                  return (
+                    <button
+                      key={shape.value}
+                      type="button"
+                      onClick={() => onChange({ qrShape: shape.value })}
+                      className="rounded-2xl border px-4 py-3 text-left transition-all duration-200"
+                      style={{
+                        borderColor: active ? 'var(--color-primary)' : 'var(--color-border)',
+                        backgroundColor: active ? 'color-mix(in srgb, var(--color-primary) 12%, var(--color-panel))' : 'var(--color-bg-tertiary)',
+                      }}
+                    >
+                      <span className="block text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                        {shape.label}
+                      </span>
+                      <span className="mt-1 block text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+                        {shape.description}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-4 border-t pt-6" style={{ borderColor: 'var(--color-border)' }}>
+          <div>
             <p className="text-sm font-semibold tracking-wide" style={{ color: 'var(--color-text-primary)' }}>
               Branding
             </p>
@@ -157,7 +207,7 @@ export function CustomizationPanel({ options, onChange }: CustomizationPanelProp
               />
             </div>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );

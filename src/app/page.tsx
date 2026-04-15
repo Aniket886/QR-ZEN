@@ -102,13 +102,13 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(340px,0.85fr)] xl:items-start">
+            <div className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(360px,0.9fr)] xl:items-start">
               <div className="min-w-0 space-y-6">
                 <div className="card p-4 sm:p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                   <QRTypeSelector selectedType={qrType} onChange={changeQRType} />
                 </div>
 
-                <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.85fr)]">
+                <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(360px,420px)]">
                   <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                     <div className="space-y-6">
                       {qrDefinition && (
