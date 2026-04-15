@@ -20,8 +20,8 @@ export function Header() {
     <header
       className="sticky top-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? 'color-mix(in srgb, var(--color-bg-secondary) 84%, transparent)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(18px)' : 'none',
+        backgroundColor: scrolled ? 'color-mix(in srgb, var(--color-bg-secondary) 94%, transparent)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
         boxShadow: scrolled ? 'var(--shadow-sm)' : 'none',
       }}
@@ -33,19 +33,19 @@ export function Header() {
               <img
                 src="/branding/qrzen-logo.png"
                 alt="QR-ZEN logo"
-                className="h-12 w-12 rounded-2xl object-cover"
-                style={{ boxShadow: '0 16px 30px rgb(109 94 252 / 0.24)' }}
+                className="h-11 w-11 rounded-2xl object-cover"
+                style={{ boxShadow: '0 12px 24px rgb(35 28 22 / 0.08)' }}
                 onError={() => setLogoLoadFailed(true)}
               />
             ) : (
               <div
-                className="relative flex h-12 w-12 items-center justify-center rounded-2xl text-white"
+                className="relative flex h-11 w-11 items-center justify-center rounded-2xl text-white"
                 style={{
                   background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
-                  boxShadow: '0 16px 30px rgb(109 94 252 / 0.24)',
+                  boxShadow: '0 12px 24px rgb(35 28 22 / 0.08)',
                 }}
               >
-                <QrCode className="h-6 w-6" />
+                <QrCode className="h-5 w-5" />
                 <span
                   className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px]"
                   style={{ color: 'var(--color-primary)' }}
@@ -56,33 +56,33 @@ export function Header() {
             )}
 
             <div>
-              <p className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                Free QR Generator
+              <p className="text-sm font-semibold tracking-tight" style={{ color: 'var(--color-text-primary)' }}>
+                QR-ZEN
               </p>
               <p className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>
-                Fast, polished, installable QR creation
+                Editorial QR creation suite
               </p>
             </div>
           </Link>
 
           <div className="flex items-center gap-3">
-            <div className="hidden rounded-full px-3 py-1 text-xs font-medium sm:block"
+            <div className="hidden rounded-full px-3 py-1 text-[11px] font-semibold sm:block"
               style={{
-                backgroundColor: 'var(--color-bg-tertiary)',
+                backgroundColor: 'var(--color-panel)',
                 color: 'var(--color-text-secondary)',
                 border: '1px solid var(--color-border)',
               }}
             >
-              PWA Ready
+              Installable PWA
             </div>
 
             <button
               type="button"
               onClick={toggleTheme}
               disabled={!mounted}
-              className="relative flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-200 hover:scale-[1.03] disabled:cursor-default"
+              className="relative flex h-11 w-11 items-center justify-center rounded-2xl transition-transform duration-200 hover:scale-[1.03] disabled:cursor-default"
               style={{
-                backgroundColor: 'var(--color-bg-tertiary)',
+                backgroundColor: 'var(--color-panel)',
                 border: '1px solid var(--color-border)',
                 color: 'var(--color-text-primary)',
               }}

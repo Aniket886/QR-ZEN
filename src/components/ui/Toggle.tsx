@@ -29,9 +29,10 @@ export function Toggle({
         onClick={() => !disabled && onChange(!checked)}
         className={cn(
           'relative inline-flex h-7 w-12 shrink-0 items-center rounded-full transition-all duration-300',
-          checked ? 'bg-[var(--color-primary)]' : 'bg-[var(--color-border)]',
+          checked ? 'bg-[var(--color-primary)]' : 'bg-[var(--color-bg-tertiary)]',
           disabled && 'cursor-not-allowed'
         )}
+        style={{ border: '1px solid var(--color-border)' }}
       >
         <span
           className={cn(

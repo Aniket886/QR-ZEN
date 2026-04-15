@@ -24,15 +24,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={id}
           className={cn(
-            'w-full px-4 py-3 rounded-xl border transition-all duration-200',
+            'w-full rounded-2xl border px-4 py-3 transition-all duration-200',
             'focus:outline-none focus:ring-4',
-            error ? 'border-red-500 focus:border-red-500' : 'focus:border-[var(--color-primary)]'
+            error ? 'border-red-500 focus:border-red-500' : 'focus:border-[var(--color-primary)]',
+            className
           )}
           style={{
-            backgroundColor: 'var(--color-bg-tertiary)',
+            backgroundColor: 'var(--color-panel)',
             borderColor: error ? '#ef4444' : 'var(--color-border)',
             color: 'var(--color-text-primary)',
-            '--tw-ring-color': 'rgb(99 102 241 / 0.2)'
+            '--tw-ring-color': 'rgb(183 106 47 / 0.14)'
           } as React.CSSProperties}
           {...props}
         />

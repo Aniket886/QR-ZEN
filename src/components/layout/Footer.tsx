@@ -6,15 +6,15 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t py-4 sm:py-5" style={{ borderColor: 'var(--color-border)' }}>
       <div className="container">
-        <div className="flex flex-col items-center justify-between gap-2 text-center sm:flex-row sm:text-left">
+        <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4" style={{ color: 'var(--color-primary)' }} />
             <span className="text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
-              Free QR Generator
+              QR-ZEN
             </span>
             <span className="text-xs sm:text-sm" style={{ color: 'var(--color-text-muted)' }}>v1.0.0</span>
           </div>
-          <div className="flex items-center gap-1 text-xs sm:text-sm" style={{ color: 'var(--color-text-muted)' }}>
+          <div className="flex flex-wrap items-center justify-center gap-1 text-xs sm:justify-end sm:text-sm" style={{ color: 'var(--color-text-muted)' }}>
             <span>Made with</span>
             <Heart className="h-4 w-4 text-rose-500" />
             <span>by</span>
@@ -22,7 +22,7 @@ export function Footer() {
               href="https://linktr.ee/anikettegginamath"
               target="_blank"
               rel="noopener noreferrer"
-              className="animate-pulse text-sm font-semibold sm:text-base"
+              className="text-sm font-semibold sm:text-base"
               style={{ color: 'var(--color-primary)' }}
             >
               Aniket Tegginamath
@@ -32,9 +32,9 @@ export function Footer() {
               href="https://buymeacoffee.com/aniket_tegginamath"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold transition sm:text-sm"
+              className="ml-1 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold transition sm:text-sm"
               style={{
-                backgroundColor: 'var(--color-bg-tertiary)',
+                backgroundColor: 'var(--color-panel)',
                 color: 'var(--color-text-primary)',
                 border: '1px solid var(--color-border)',
               }}

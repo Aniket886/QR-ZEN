@@ -68,17 +68,17 @@ export function QRPreview({ data, options }: QRPreviewProps) {
 
   if (!data) {
     return (
-      <div className="relative flex min-h-[360px] flex-col items-center justify-center overflow-hidden rounded-[1.75rem] panel-muted">
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute left-12 top-12 h-28 w-28 rounded-full" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))', filter: 'blur(46px)' }} />
-          <div className="absolute bottom-8 right-10 h-24 w-24 rounded-full" style={{ background: 'linear-gradient(135deg, var(--color-accent), var(--color-primary))', filter: 'blur(36px)' }} />
+      <div className="relative flex min-h-[320px] flex-col items-center justify-center overflow-hidden rounded-[1.75rem] border" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-panel-strong)' }}>
+        <div className="absolute inset-0 opacity-35">
+          <div className="absolute left-12 top-12 h-28 w-28 rounded-full" style={{ background: 'linear-gradient(135deg, var(--color-primary), transparent)', filter: 'blur(56px)' }} />
+          <div className="absolute bottom-8 right-10 h-24 w-24 rounded-full" style={{ background: 'linear-gradient(135deg, var(--color-accent), transparent)', filter: 'blur(42px)' }} />
         </div>
         <div className="relative flex flex-col items-center gap-4 text-center p-8">
-          <div className="flex h-20 w-20 items-center justify-center rounded-3xl" style={{ backgroundColor: 'var(--color-panel)', boxShadow: 'var(--shadow-md)' }}>
-            <QrCode className="h-10 w-10" style={{ color: 'var(--color-primary)' }} />
+          <div className="flex h-20 w-20 items-center justify-center rounded-3xl border" style={{ backgroundColor: 'var(--color-panel)', boxShadow: 'var(--shadow-sm)', borderColor: 'var(--color-border)' }}>
+            <QrCode className="h-10 w-10" style={{ color: 'var(--color-primary-strong)' }} />
           </div>
           <div>
-            <h3 className="mb-1 text-lg font-bold" style={{ color: 'var(--color-text-primary)' }}>
+            <h3 className="mb-1 text-lg font-bold" style={{ color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>
               Your QR Code
             </h3>
             <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
@@ -92,10 +92,10 @@ export function QRPreview({ data, options }: QRPreviewProps) {
 
   return (
     <div className="flex w-full min-w-0 flex-col items-center gap-6">
-      <div className="relative w-full overflow-hidden rounded-[1.75rem] p-4 sm:p-6" style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--color-bg-tertiary) 88%, transparent), color-mix(in srgb, var(--color-panel) 98%, transparent))', border: '1px solid var(--color-border)' }}>
+      <div className="relative w-full overflow-hidden rounded-[1.75rem] border p-4 sm:p-6" style={{ background: 'linear-gradient(180deg, color-mix(in srgb, var(--color-panel-strong) 88%, transparent), color-mix(in srgb, var(--color-panel) 98%, transparent))', borderColor: 'var(--color-border)' }}>
         <div className="mx-auto flex w-full max-w-full flex-col items-center gap-4">
-          <div className="rounded-[1.75rem] p-4 animate-pulse-glow" style={{ background: 'linear-gradient(135deg, rgb(109 94 252 / 0.12), rgb(25 194 201 / 0.12))' }}>
-            <div className="rounded-[1.4rem] p-5" style={{ backgroundColor: 'var(--color-panel)', boxShadow: 'var(--shadow-lg)' }}>
+          <div className="rounded-[1.75rem] border p-4" style={{ background: 'linear-gradient(135deg, rgb(183 106 47 / 0.08), rgb(47 108 102 / 0.06))', borderColor: 'var(--color-border)' }}>
+            <div className="rounded-[1.4rem] border p-5" style={{ backgroundColor: 'var(--color-panel)', boxShadow: 'var(--shadow-sm)', borderColor: 'var(--color-border)' }}>
               <div className="p-4" style={{ backgroundColor: options.bgColor, borderRadius: frameRadius }}>
                 <QRCodeSVG
                   ref={svgRef}
@@ -144,16 +144,16 @@ export function QRPreview({ data, options }: QRPreviewProps) {
         </button>
         <button
           onClick={handleDownloadSVG}
-          className="flex min-w-[112px] items-center justify-center gap-2 rounded-2xl px-5 py-3 font-semibold transition-transform duration-200 hover:scale-[1.02]"
-          style={{ backgroundColor: 'var(--color-bg-tertiary)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }}
+          className="flex min-w-[112px] items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold transition-transform duration-200 hover:scale-[1.02]"
+          style={{ backgroundColor: 'var(--color-panel)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }}
         >
           <Download className="w-4 h-4" />
           SVG
         </button>
         <button
           onClick={handleCopy}
-          className="flex min-w-[112px] items-center justify-center gap-2 rounded-2xl px-5 py-3 font-semibold transition-transform duration-200 hover:scale-[1.02]"
-          style={{ backgroundColor: 'var(--color-bg-tertiary)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }}
+          className="flex min-w-[112px] items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold transition-transform duration-200 hover:scale-[1.02]"
+          style={{ backgroundColor: 'var(--color-panel)', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)' }}
         >
           {copied ? (
             <>

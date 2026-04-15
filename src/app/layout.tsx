@@ -1,10 +1,15 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Manrope, Fraunces } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 
-const inter = Inter({
-  variable: '--font-inter',
+const manrope = Manrope({
+  variable: '--font-sans',
+  subsets: ['latin'],
+});
+
+const fraunces = Fraunces({
+  variable: '--font-display',
   subsets: ['latin'],
 });
 
@@ -13,6 +18,7 @@ export const metadata: Metadata = {
   description: 'Generate QR codes instantly - no registration required. Create QR codes for URLs, text, WiFi, email, phone, and SMS.',
   keywords: ['QR code generator', 'QR code', 'free QR', 'QR generator', 'QR maker'],
   authors: [{ name: 'Free QR Generator' }],
+  metadataBase: new URL('https://qr-zen.vercel.app'),
   manifest: '/manifest.json',
   icons: {
     icon: '/branding/qrzen-logo.png',
@@ -40,7 +46,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#6366f1',
+  themeColor: '#f4efe6',
 };
 
 export default function RootLayout({
@@ -49,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${manrope.variable} ${fraunces.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Script id="theme-init" strategy="beforeInteractive">
           {`(() => {
