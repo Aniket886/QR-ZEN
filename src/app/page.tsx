@@ -1,12 +1,17 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { QRTypeSelector } from '@/components/qr/QRTypeSelector';
 import { InputForm } from '@/components/qr/InputForms/InputForm';
 import { QRPreview } from '@/components/qr/QRPreview';
 import { CustomizationPanel } from '@/components/qr/CustomizationPanel';
+import { PresetsPanel } from '@/components/qr/PresetsPanel';
 import { useQRGenerator } from '@/hooks/useQRGenerator';
+import { copyToClipboard } from '@/lib/utils';
+import { decodeSnapshot, encodeSnapshot, loadPresets, savePresets } from '@/lib/presets';
+import { QRPreset } from '@/lib/types';
 
 export default function Home() {
   const {
@@ -19,7 +24,67 @@ export default function Home() {
     updateOptions,
     changeQRType,
     clearForm,
+    applySnapshot,
+    getSnapshot,
   } = useQRGenerator();
+  const [presets, setPresets] = useState<QRPreset[]>([]);
+  const hasHydratedFromUrlRef = useRef(false);
+
+  useEffect(() => {
+    setPresets(loadPresets());
+  }, []);
+
+  useEffect(() => {
+    if (hasHydratedFromUrlRef.current) return;
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('preset');
+    if (!token) {
+      hasHydratedFromUrlRef.current = true;
+      return;
+    }
+    const snapshot = decodeSnapshot(token);
+    if (!snapshot) {
+      hasHydratedFromUrlRef.current = true;
+      return;
+    }
+    applySnapshot(snapshot);
+    hasHydratedFromUrlRef.current = true;
+  }, [applySnapshot]);
+
+  const handleSavePreset = (name: string): boolean => {
+    const normalizedName = name.trim();
+    if (!normalizedName) return false;
+
+    const newPreset: QRPreset = {
+      id: typeof crypto !== 'undefined' && 'randomUUID' in crypto
+        ? crypto.randomUUID()
+        : `${Date.now()}`,
+      name: normalizedName,
+      createdAt: new Date().toISOString(),
+      snapshot: getSnapshot(),
+    };
+
+    const updated = [newPreset, ...presets];
+    setPresets(updated);
+    savePresets(updated);
+    return true;
+  };
+
+  const handleApplyPreset = (preset: QRPreset) => {
+    applySnapshot(preset.snapshot);
+  };
+
+  const handleDeletePreset = (id: string) => {
+    const updated = presets.filter((preset) => preset.id !== id);
+    setPresets(updated);
+    savePresets(updated);
+  };
+
+  const handleCopyShareLink = async (preset: QRPreset): Promise<boolean> => {
+    const token = encodeSnapshot(preset.snapshot);
+    const shareUrl = `${window.location.origin}${window.location.pathname}?preset=${token}`;
+    return copyToClipboard(shareUrl);
+  };
 
   return (
     <>
@@ -57,6 +122,16 @@ export default function Home() {
                 <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                   <CustomizationPanel options={options} onChange={updateOptions} />
                 </div>
+              </div>
+
+              <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.35s' }}>
+                <PresetsPanel
+                  presets={presets}
+                  onSavePreset={handleSavePreset}
+                  onApplyPreset={handleApplyPreset}
+                  onDeletePreset={handleDeletePreset}
+                  onCopyShareLink={handleCopyShareLink}
+                />
               </div>
             </div>
 
