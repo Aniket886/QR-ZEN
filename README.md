@@ -6,11 +6,6 @@
 
 Built with **Next.js 16** · **Tailwind CSS v4** · **TypeScript**
 
-[![Made with Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-coffee-orange)](https://buymeacoffee.com/aniket_tegginamath)
-
 ---
 
 *A polished, responsive QR code generator with live preview, presets, customization, and multi-format export.*
@@ -96,25 +91,38 @@ The UI is built as a responsive single-dashboard workspace with a clean builder 
 
 ## Project Structure
 
-```txt
+```
+
 src/
+
 ├── app/
+
 ├── components/
+
 │   ├── layout/
+
 │   ├── qr/
+
 │   └── ui/
+
 ├── config/
+
 ├── hooks/
+
 └── lib/
+
 ```
 
 ---
 
 ## Getting Started
 
-```bash
+```
+
 npm install
+
 npm run dev
+
 ```
 
 Open `http://localhost:3000`.
@@ -131,9 +139,12 @@ Open `http://localhost:3000`.
 
 ## Build
 
-```bash
+```
+
 npm run build
+
 npm start
+
 ```
 
 ---
@@ -142,7 +153,6 @@ npm start
 
 - Production: https://qr-zen.vercel.app/
 - Hosting platform: Vercel
-- Favicon / app icon source: branded logo in `src/app/icon.png` and `public/branding/qrzen-logo.png`
 
 ---
 
