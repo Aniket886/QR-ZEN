@@ -2,8 +2,9 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import { QRType, QRGeneratorOptions, defaultQRGeneratorOptions, getQRTypeDefinition } from '@/config/qr-types';
-import { QRFormValues } from '@/lib/types';
+import { QRFormValues, QRStateSnapshot } from '@/lib/types';
 import { debounce } from '@/lib/utils';
+import { sanitizeSnapshot } from '@/lib/presets';
 
 export function useQRGenerator() {
   const [qrType, setQRType] = useState<QRType>('url');
@@ -42,6 +43,21 @@ export function useQRGenerator() {
     setDebouncedValue('');
   }, []);
 
+  const getSnapshot = useCallback((): QRStateSnapshot => {
+    return sanitizeSnapshot({
+      qrType,
+      formValues,
+      options,
+    });
+  }, [qrType, formValues, options]);
+
+  const applySnapshot = useCallback((snapshot: QRStateSnapshot) => {
+    const safeSnapshot = sanitizeSnapshot(snapshot);
+    setQRType(safeSnapshot.qrType);
+    setFormValues(safeSnapshot.formValues);
+    setOptions(safeSnapshot.options);
+  }, []);
+
   const qrData = useMemo(() => {
     if (!qrDefinition) return '';
     return qrDefinition.buildData(formValues);
@@ -57,5 +73,7 @@ export function useQRGenerator() {
     updateOptions,
     changeQRType,
     clearForm,
+    getSnapshot,
+    applySnapshot,
   };
 }
