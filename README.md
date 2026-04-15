@@ -161,4 +161,3 @@ The footer includes:
 **📄 MIT © [Aniket Tegginamath](https://linktr.ee/anikettegginamath)**
 
 </div>
-```
