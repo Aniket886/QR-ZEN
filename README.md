@@ -1,6 +1,21 @@
-# QR-ZEN — Free QR Generator
+<div align="center">
 
-A polished, responsive QR code generator built with **Next.js 16** and **Tailwind CSS v4**.
+# 🔳 QR-ZEN
+
+### ⚡ Free, Fast & Beautiful QR Code Generator
+
+Built with **Next.js 16** · **Tailwind CSS v4** · **TypeScript**
+
+[![Made with Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-☕-orange)](https://buymeacoffee.com/aniket_tegginamath)
+
+---
+
+*A polished, responsive QR code generator with glass-panel UI, live preview, presets, and multi-format export.*
+
+</div>
 
 ---
 
