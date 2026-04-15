@@ -107,7 +107,7 @@ export default function Home() {
                 <QRTypeSelector selectedType={qrType} onChange={changeQRType} />
               </div>
 
-              <div className="grid gap-6 2xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+              <div className="grid items-start gap-6 2xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
                 <div className="card p-5 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                   {qrDefinition && (
                     <InputForm
