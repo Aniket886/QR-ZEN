@@ -196,6 +196,9 @@ export interface QRGeneratorOptions {
   size: number;
   fgColor: string;
   bgColor: string;
+  designPreset: 'classic' | 'midnight' | 'ocean' | 'sunset';
+  qrShape: 'square' | 'rounded' | 'circle';
+  marginSize: number;
   includeLogo: boolean;
   logoUrl?: string;
 }
@@ -204,6 +207,9 @@ export const defaultQRGeneratorOptions: QRGeneratorOptions = {
   size: 256,
   fgColor: '#000000',
   bgColor: '#ffffff',
+  designPreset: 'classic',
+  qrShape: 'square',
+  marginSize: 0,
   includeLogo: false,
   logoUrl: undefined,
 };
